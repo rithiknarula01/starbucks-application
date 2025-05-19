@@ -58,6 +58,7 @@ pipeline {
         stage('terraform apply/destroy') {
             steps {
                 dir('terraform') {
+                    sh 'echo "Action parameter value: ${action}"'
                     sh '''
                     terraform ${action} --auto-approve \
                     -var="access_key=$AWS_ACCESS_KEY_ID" \
